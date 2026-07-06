@@ -6,14 +6,6 @@ This project demonstrates end-to-end data analysis using SQL Server and Power BI
 
 ---
 
-## Project Overview
-
-Data-driven decision-making plays a critical role in improving product strategy, inventory planning, pricing decisions, and overall business performance. This project analyzes a Jordan sneaker market dataset to uncover actionable insights that help business stakeholders evaluate product performance, profitability, sales channel effectiveness, inventory efficiency, and customer demand.
-
-Using **SQL Server** for data analysis and **Power BI** for interactive visualization, the project follows a complete business analytics workflow—from data cleaning and exploratory data analysis (EDA) to business-focused SQL analysis and dashboard development. The result is a set of practical insights and recommendations that support better business decision-making.
-
----
-
 ## Business Problem
 
 Businesses operating in the sneaker resale market must balance customer demand, profitability, inventory turnover, and sales channel performance when making product selection and inventory investment decisions.
@@ -30,20 +22,6 @@ The analysis focuses on answering questions such as:
 - How does product condition affect resale price and profitability?
 - Which shoe models sell the fastest based on inventory turnover?
 - Which shoe model–colorway combinations should the business prioritize based on overall performance?
-
----
-
-## Project Objectives
-
-The objectives of this project are to:
-
-- Evaluate overall product performance.
-- Identify the most profitable shoe models and colorways.
-- Compare the performance of different sales channels.
-- Analyze inventory turnover efficiency.
-- Measure the impact of product condition on resale value and profitability.
-- Identify customer demand trends across products and colorways.
-- Deliver business recommendations supported by data analysis.
 
 ---
 
@@ -109,153 +87,25 @@ Business Analysis
 Business Insights & Recommendations
         │
         ▼
-Executive Summary
-        │
-        ▼
 Interactive Power BI Dashboard
 ```
-
-This workflow ensures that every recommendation presented in the dashboard is supported by structured data analysis and aligned with real business questions.
-
----
-
-## Data Validation & Preparation
-
-Before beginning the analysis, the dataset was validated to ensure its quality and suitability for business analysis.
-
-The validation process included:
-
-- Reviewing the dataset structure and verifying column data types.
-- Checking for missing (NULL) values.
-- Checking for duplicate transactions.
-- Confirming the dataset was complete and consistent.
-- Creating a dedicated analysis table (`jordan_market_clean`) to separate the validated dataset from the original source data.
-
-The validation confirmed that the dataset required minimal cleaning and was suitable for analysis. All SQL queries and Power BI visualizations were built using the validated analysis table.
-
----
-
-## Exploratory Data Analysis (EDA)
-
-Before addressing the business questions, an exploratory data analysis (EDA) was conducted to understand the overall characteristics of the dataset.
-
-The exploration focused on:
-
-- Total number of transactions
-- Sales date range
-- Number of unique shoe models
-- Number of unique colorways
-- Distribution of sales channels
-- Distribution of product conditions
-
-This initial analysis provided a clear understanding of the dataset and helped identify the key dimensions for the subsequent business analysis.
-
 ---
 
 # Business Analysis
 
-The primary objective of this project is to answer business-oriented questions and transform transaction data into meaningful business insights that support data-driven decision-making.
+The SQL analysis was organized into seven business-focused domains to answer real business questions and support data-driven decision-making.
 
-To achieve this, the analysis is organized into seven key business domains. Each section addresses a specific business objective, investigates relevant business questions, and concludes with business insights and recommendations based on the analytical findings.
+The analysis covers:
 
----
+1. **Product Performance** – Evaluates sales performance across shoe models and colorways.
+2. **Profitability** – Identifies products that generate the highest financial returns and analyzes loss-making transactions.
+3. **Sales Channel Performance** – Compares profitability, sales volume, and inventory efficiency across different sales channels.
+4. **Inventory Analysis** – Evaluates inventory turnover and its relationship with profitability.
+5. **Product Condition Analysis** – Measures the impact of product condition on resale price and profit.
+6. **Demand Analysis** – Identifies the most popular colorways and demand patterns across shoe models.
+7. **Overall Product Performance** – Evaluates products by balancing sales volume, profitability, and inventory efficiency.
 
-## 1. Product Performance Analysis
-
-**Objective**
-
-Evaluate the performance of Jordan sneaker models and colorways to identify products that consistently generate strong customer demand.
-
-**Business Questions**
-
-- Which shoe models have the highest sales volume?
-- Which shoe model–colorway combinations have the highest sales volume?
-- Which colorways are the most popular across all shoe models?
-
----
-
-## 2. Profitability Analysis
-
-**Objective**
-
-Identify the products that generate the greatest financial return and evaluate overall profitability.
-
-**Business Questions**
-
-- Which shoe models generate the highest total profit?
-- Which shoe models generate the highest average profit per transaction?
-- Which shoe models record the highest number of loss-making transactions?
-
----
-
-## 3. Sales Channel Analysis
-
-**Objective**
-
-Evaluate the performance of different sales channels to understand their contribution to profitability, sales performance, and inventory efficiency.
-
-**Business Questions**
-
-- Which sales channel generates the highest total profit?
-- Which sales channel generates the highest average profit?
-- Which sales channel records the highest sales volume?
-- Which sales channel achieves the fastest inventory turnover?
-
----
-
-
-## 4. Inventory Analysis
-
-**Objective**
-
-Evaluate inventory turnover efficiency and identify opportunities to improve inventory management.
-
-**Business Questions**
-
-- Which shoe models sell the fastest based on average inventory days?
-- Is there a relationship between inventory turnover and profitability?
-
----
-
-## 5. Product Condition Analysis
-
-**Objective**
-
-Measure the impact of product condition on resale value and profitability.
-
-**Business Questions**
-
-- How does product condition affect resale price?
-- How does product condition affect profitability?
-
----
-
-## 6. Demand Analysis
-
-**Objective**
-
-Understand customer demand by identifying popular colorways and evaluating demand patterns across different shoe models.
-
-**Business Questions**
-
-- Which colorways have the highest demand?
-- Do popular colorways remain popular across different shoe models?
-
----
-
-## 7. Overall Product Performance
-
-**Objective**
-
-Identify products that provide the strongest balance between customer demand, profitability, and inventory efficiency.
-
-**Business Question**
-
-- Which shoe model–colorway combinations provide the best balance of sales volume, profitability, and inventory turnover?
-
----
-
-Each business question was answered using SQL Server through structured queries, followed by business insights and recommendations. The final findings were visualized in interactive Power BI dashboards to support data-driven business decision-making.
+Each business domain was analyzed using SQL Server, followed by business insights and recommendations. The final findings were visualized through interactive Power BI dashboards.
 
 ---
 
@@ -267,23 +117,23 @@ The dashboard is organized into two pages:
 
 ## Executive Dashboard
 
-The Executive Dashboard provides a high-level overview of business performance through KPIs and summary visualizations.
+The Executive Dashboard provides a high-level overview of overall business performance through key performance indicators (KPIs) and summary visualizations.
 
-The dashboard provides a high-level overview through the following KPIs:
+The dashboard includes:
 
 - Total Revenue
 - Total Profit
 - Average Profit
 - Total Transactions
 
-The dashboard also highlights:
+It also highlights:
 
 - Sales trends over time
 - Sales by shoe model
 - Profit by sales channel
 - Product condition distribution
 
-📷 Executive Dashboard
+### Executive Dashboard
 
 ![Executive Dashboard](Dashboard/Executive_Dashboard.png)
 
@@ -291,7 +141,7 @@ The dashboard also highlights:
 
 ## Business Performance Dashboard
 
-The Business Performance Dashboard provides detailed operational insights.
+The Business Performance Dashboard provides detailed operational insights to support product and sales performance analysis.
 
 It enables users to analyze:
 
@@ -302,7 +152,7 @@ It enables users to analyze:
 - Product condition
 - Product comparison using interactive filters
 
-📷 Business Performance Dashboard
+### Business Performance Dashboard
 
 ![Business Dashboard](Dashboard/Business_Performance_Dashboard.png)
 
@@ -316,7 +166,7 @@ It enables users to analyze:
 - GOAT recorded the highest sales volume.
 - Deadstock sneakers achieved the highest resale prices and profitability.
 - Inventory turnover remained relatively consistent across shoe models.
-- No single product outperformed across every KPI, indicating that product prioritization should align with the business objective, whether the focus is profitability, customer demand, or inventory turnover.
+- No single product outperformed across every KPI, indicating that product prioritization should align with the organization's business objectives, whether the focus is profitability, customer demand, or inventory efficiency.
 
 ---
 
@@ -334,16 +184,17 @@ Based on the analysis, the following recommendations are proposed:
 
 ## Skills Demonstrated
 
-- SQL Data Cleaning
+- SQL
+- Data Cleaning
 - Data Validation
 - Exploratory Data Analysis (EDA)
 - Aggregate Functions
-- GROUP BY
 - CASE Expressions
-- Business Analytics
+- GROUP BY
 - KPI Development
-- Power BI Dashboard Design
+- Business Analytics
 - Business Insight Generation
+- Power BI Dashboard Design
 
 ---
 
