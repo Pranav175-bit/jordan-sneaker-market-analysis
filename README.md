@@ -1,5 +1,11 @@
 # Jordan Sneaker Market Analysis | SQL Server & Power BI
 
+## Project Summary
+
+This project demonstrates end-to-end data analysis using SQL Server and Power BI. It covers data validation, exploratory data analysis (EDA), business analysis, and interactive dashboard development to generate actionable business insights for sneaker resale market performance.
+
+---
+
 ## Project Overview
 
 Data-driven decision-making plays a critical role in improving product strategy, inventory planning, pricing decisions, and overall business performance. This project analyzes a Jordan sneaker market dataset to uncover actionable insights that help business stakeholders evaluate product performance, profitability, sales channel effectiveness, inventory efficiency, and customer demand.
@@ -59,6 +65,16 @@ The dataset contains **5,000 Air Jordan sneaker market transactions**, providing
 | Sales_Channel | Sales platform where the product was sold |
 | Days_in_Inventory | Number of days before the product was sold |
 | Profit_Margin_USD | Profit earned from each transaction |
+
+---
+
+## Dataset Source
+
+This project uses the **Air Jordan Sneaker Market and Resale Data (2023–2026)** dataset from Kaggle, containing 5,000 sneaker resale transactions with information on pricing, profitability, inventory, and sales channels.
+
+**Source:** Kaggle – https://www.kaggle.com/datasets/abdullahmeo/air-jordan-sneaker-market-and-resale-data2023-2026
+
+*Note:* The dataset was used for educational and portfolio purposes. All SQL analysis, business insights, and Power BI dashboards were independently developed.
 
 ---
 
