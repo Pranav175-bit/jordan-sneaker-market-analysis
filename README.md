@@ -337,17 +337,19 @@ Based on the analysis, the following recommendations are proposed:
 Jordan-Sneaker-Market-Analysis/
 │
 ├── Dataset/
-│   └── jordan_market_dataset.csv
+│   └── jordan_market_dataset_2026.csv
 │
 ├── SQL/
 │   └── jordan_sneaker_market_analysis.sql
 │
-├── Dashboard/
-│   ├── Executive_Dashboard.png
-│   ├── Business_Performance_Dashboard.png
+├── Power BI/
 │   └── jordan_sneaker_market_analysis.pbix
 │
-├── README.md
+├── Dashboard/
+│   ├── Executive_Dashboard.png
+│   └── Business_Performance_Dashboard.png
+│
+└── README.md
 ```
 ---
 
