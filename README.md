@@ -22,6 +22,8 @@ The analysis focuses on answering questions such as:
 - How does product condition affect resale price and profitability?
 - Which shoe models sell the fastest based on inventory turnover?
 - Which shoe model–colorway combinations should the business prioritize based on overall performance?
+- Which shoe models are most associated with loss-making transactions?
+- Which sales channels turn over inventory the fastest?
 
 ---
 
@@ -91,7 +93,7 @@ Interactive Power BI Dashboard
 ```
 ---
 
-# Business Analysis
+## Business Analysis
 
 The SQL analysis was organized into seven business-focused domains to answer real business questions and support data-driven decision-making.
 
@@ -109,64 +111,73 @@ Each business domain was analyzed using SQL Server, followed by business insight
 
 ---
 
-# Power BI Dashboard
+## Power BI Dashboard
 
-The SQL analysis was transformed into interactive Power BI dashboards to enable business stakeholders to monitor performance, compare products, and support data-driven decision-making.
+The SQL analysis was transformed into an interactive, 3-page Power BI dashboard to enable business stakeholders to monitor performance, compare products, and support data-driven decision-making. Each page includes a Key Insight and Action callout, translating the underlying data into clear business takeaways.
 
-The dashboard is organized into two pages:
+The dashboard tells a complete story across 3 pages: a high-level performance overview, a deeper operational and risk analysis, and a final view on which products to prioritize going forward.
 
-## Executive Dashboard
+### 1. Executive Dashboard
 
-The Executive Dashboard provides a high-level overview of overall business performance through key performance indicators (KPIs) and summary visualizations.
+A high-level overview of overall business performance through key KPIs and summary visualizations.
 
-The dashboard includes:
+Includes:
+- Total Transactions, Total Profit, Average Profit, Average Inventory Days
+- Monthly Profit Trend
+- Sales Volume by Colorway
+- Total Profit by Shoe Model
+- Total Profit by Sales Channel
+- Sales Volume by Shoe Model
 
-- Total Revenue
-- Total Profit
-- Average Profit
-- Total Transactions
-
-It also highlights:
-
-- Sales trends over time
-- Sales by shoe model
-- Profit by sales channel
-- Product condition distribution
-
-### Executive Dashboard
+**Key Insight:** Air Jordan 4 Retro and 11 Retro generate the highest profit, and Walk-in Retail is the strongest sales channel — driving most of the business's overall profitability.
+**Action:** Prioritize inventory and marketing focus on these top-performing models and channels to sustain profit growth.
 
 ![Executive Dashboard](Dashboard/Executive_Dashboard.png)
 
 ---
 
-## Business Performance Dashboard
+### 2. Business Performance Analysis
 
-The Business Performance Dashboard provides detailed operational insights to support product and sales performance analysis.
+Detailed operational insights into profitability, inventory turnover, and loss-making transactions.
 
-It enables users to analyze:
+Includes:
+- Total Loss Amount, Count of Loss-Making Transactions
+- Average Profit and Resale Price by Product Condition
+- Average Profit by Inventory Category
+- Average Profit by Sales Channel
+- Average Inventory Days by Shoe Model
+- Inventory Turnover by Sales Channel
+- Loss-Making Transactions by Shoe Model
 
-- Product profitability
-- Inventory turnover
-- Colorway demand
-- Sales channel performance
-- Product condition
-- Product comparison using interactive filters
-
-### Business Performance Dashboard
+**Key Insight:** Deadstock-condition items generate significantly higher profit and resale value than VNDS or Used condition, while loss-making transactions (1,933 total, $98.2K in losses) remain a meaningful drag on overall profitability.
+**Action:** Prioritize sourcing and stocking Deadstock-condition inventory, and investigate the drivers behind loss-making transactions to reduce their frequency.
 
 ![Business Dashboard](Dashboard/Business_Performance_Dashboard.png)
 
 ---
+### 3. Product Prioritization Analysis
 
+Combines profitability, demand, and inventory efficiency into a single view to guide product prioritization decisions.
+
+Includes:
+- Profit by Colorway
+- Shoe Model × Colorway Profit Matrix
+- Overall Performance comparison (Profit vs. Sales Volume vs. Inventory Turnover) by Shoe Model
+
+**Key Insight:** No single product wins across every metric — prioritization depends on business goals: profitability, demand, or inventory efficiency.
+**Action:** Align product prioritization with current business goals — choose high-profit models (like Jordan 4 Retro) for revenue growth, or high-volume models for maximizing market reach and turnover speed.
+
+![Product Prioritization Analysis](Dashboard/Product_Prioritization_Analysis.png)
+
+---
 ## Key Insights
 
-- Air Jordan 4 Retro generated the highest total profit.
-- Air Jordan 11 Retro achieved the highest average profit per transaction.
-- Walk-in Retail generated the highest total and average profit among all sales channels.
-- GOAT recorded the highest sales volume.
-- Deadstock sneakers achieved the highest resale prices and profitability.
-- Inventory turnover remained relatively consistent across shoe models.
-- No single product outperformed across every KPI, indicating that product prioritization should align with the organization's business objectives, whether the focus is profitability, customer demand, or inventory efficiency.
+- Air Jordan 4 Retro generated the highest total profit; Air Jordan 11 Retro achieved the highest average profit per transaction.
+- Walk-in Retail generated the highest total and average profit among all sales channels, though it also has the slowest inventory turnover.
+- GOAT and StockX turn over inventory the fastest (~7 days average), compared to Walk-in Retail (~33 days) — a significant efficiency gap across channels.
+- Deadstock sneakers achieved the highest resale prices and profitability among all product conditions.
+- Loss-making transactions totaled 1,933 (out of 5,000), amounting to $98.2K in losses — concentrated most heavily in Air Jordan 3 Retro and Air Jordan 1 Low.
+- No single shoe model outperforms across every metric simultaneously — profitability, demand, and inventory turnover each favor different models, meaning prioritization should align with specific business goals rather than a single "best" product.
 
 ---
 
@@ -195,6 +206,9 @@ Based on the analysis, the following recommendations are proposed:
 - Business Analytics
 - Business Insight Generation
 - Power BI Dashboard Design
+- DAX (Measures, CALCULATE, DISTINCTCOUNT)
+- Matrix & Scatter Chart Visualization
+- Data Storytelling & Insight Communication
 
 ---
 
@@ -214,13 +228,14 @@ Jordan-Sneaker-Market-Analysis/
 │
 ├── Dashboard/
 │   ├── Executive_Dashboard.png
-│   └── Business_Performance_Dashboard.png
+│   ├── Business_Performance_Dashboard.png
+│   └── Product_Prioritization_Analysis.png
 │
 └── README.md
 ```
 ---
 
-# How to Run the Project
+## How to Run the Project
 
 1. Import the dataset into SQL Server.
 2. Execute the SQL script (`jordan_sneaker_market_analysis.sql`).
@@ -230,7 +245,7 @@ Jordan-Sneaker-Market-Analysis/
 
 ---
 
-# Author
+## Author
 
 **Pranav P A**
 
