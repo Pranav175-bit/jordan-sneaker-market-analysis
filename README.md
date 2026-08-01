@@ -54,6 +54,8 @@ This project uses the **Air Jordan Sneaker Market and Resale Data (2023–2026)*
 
 **Source:** Kaggle – https://www.kaggle.com/datasets/abdullahmeo/air-jordan-sneaker-market-and-resale-data2023-2026
 
+*Note:* While the dataset is titled "2023–2026" on Kaggle, the actual transaction records analyzed in this project span January 2023 to September 2025.
+
 *Note:* The dataset was used for educational and portfolio purposes. All SQL analysis, business insights, and Power BI dashboards were independently developed.
 
 ---
