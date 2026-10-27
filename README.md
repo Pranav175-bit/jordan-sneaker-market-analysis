@@ -17,7 +17,7 @@ This project addresses these challenges by analyzing historical transaction data
 The analysis focuses on answering questions such as:
 
 - Which shoe models generate the highest sales and profit?
-- Which colorways have the strongest customer demand?
+- Which colorways show the strongest demand based on transaction volume?
 - Which sales channels perform best?
 - How does product condition affect resale price and profitability?
 - Which shoe models sell the fastest based on inventory turnover?
@@ -44,19 +44,20 @@ The dataset contains **5,000 Air Jordan sneaker market transactions**, providing
 | Resale_Price_USD | Selling price |
 | Sales_Channel | Sales platform where the product was sold |
 | Days_in_Inventory | Number of days before the product was sold |
-| Profit_Margin_USD | Profit earned from each transaction |
+| Profit_Margin_USD | Resale price minus original retail price; fees and other expenses are not deducted |
 
+**Metric Interpretation:** Throughout this project, the terms “profit” and “loss” refer to the dataset's `Profit_Margin_USD` measure, calculated as resale price minus original retail price. The measure does not account for fees or other expenses, so it should not be interpreted as actual net profit or confirmed financial loss.
 ---
 
 ## Dataset Source
 
-This project uses the **Air Jordan Sneaker Market and Resale Data (2023–2026)** dataset from Kaggle, containing 5,000 sneaker resale transactions with information on pricing, profitability, inventory, and sales channels.
+This project uses the **Air Jordan Sneaker Market and Resale Data (2023–2026)** dataset from Kaggle, containing 5,000 sneaker resale records with information on pricing, inventory, sales channels, and the difference between resale and retail prices.
 
 **Source:** Kaggle – https://www.kaggle.com/datasets/abdullahmeo/air-jordan-sneaker-market-and-resale-data2023-2026
 
 *Note:* While the dataset is titled "2023–2026" on Kaggle, the actual transaction records analyzed in this project span January 2023 to September 2025.
 
-*Note:* The dataset was used for educational and portfolio purposes. All SQL analysis, business insights, and Power BI dashboards were independently developed.
+*Note:* This dataset was used for educational and portfolio purposes. Its records have not been independently verified as actual marketplace transactions, so findings should be interpreted as patterns within the dataset rather than confirmed real-world market outcomes. All SQL analysis, business insights, and Power BI dashboards were independently developed.
 
 ---
 
@@ -102,10 +103,10 @@ The SQL analysis was organized into seven business-focused domains to answer rea
 The analysis covers:
 
 1. **Product Performance** – Evaluates sales performance across shoe models and colorways.
-2. **Profitability** – Identifies products that generate the highest financial returns and analyzes loss-making transactions.
+2. **Profitability** – Compares the dataset's resale–retail price differences across products and analyzes records with negative differences.
 3. **Sales Channel Performance** – Compares profitability, sales volume, and inventory efficiency across different sales channels.
 4. **Inventory Analysis** – Evaluates inventory turnover and its relationship with profitability.
-5. **Product Condition Analysis** – Measures the impact of product condition on resale price and profit.
+5. **Product Condition Analysis** – Compares resale prices and resale price differences across product conditions.
 6. **Demand Analysis** – Identifies the most popular colorways and demand patterns across shoe models.
 7. **Overall Product Performance** – Evaluates products by balancing sales volume, profitability, and inventory efficiency.
 
@@ -131,8 +132,8 @@ Includes:
 - Total Profit by Sales Channel
 - Sales Volume by Shoe Model
 
-**Key Insight:** Air Jordan 4 Retro and 11 Retro generate the highest profit, and Walk-in Retail is the strongest sales channel — driving most of the business's overall profitability.
-**Action:** Prioritize inventory and marketing focus on these top-performing models and channels to sustain profit growth.
+**Key Insight:** Air Jordan 4 Retro recorded the highest total resale price difference, while Air Jordan 11 Retro had the highest average resale price difference per transaction. Walk-in Retail recorded the highest total and average resale price differences among sales channels.
+**Action:** Consider these results alongside transaction volume and inventory duration when making product selection and inventory allocation decisions.
 
 ![Executive Dashboard](Dashboard/Executive_Dashboard.png)
 
@@ -151,35 +152,35 @@ Includes:
 - Inventory Turnover by Sales Channel
 - Loss-Making Transactions by Shoe Model
 
-**Key Insight:** Deadstock-condition items generate significantly higher profit and resale value than VNDS or Used condition, while loss-making transactions (1,933 total, $98.2K in losses) remain a meaningful drag on overall profitability.
-**Action:** Prioritize sourcing and stocking Deadstock-condition inventory, and investigate the drivers behind loss-making transactions to reduce their frequency.
+**Key Insight:** Deadstock-condition items had the highest average resale prices and resale price differences. Of the 5,000 records, 1,933 had negative resale price differences, with a combined negative difference of approximately $98.2K.
+**Action:** Prioritize sourcing and stocking Deadstock-condition inventory based on its observed resale-price performance, and investigate patterns in negative resale price differences to inform inventory decisions.
 
 ![Business Dashboard](Dashboard/Business_Performance_Dashboard.png)
 
 ---
 ### 3. Product Prioritization Analysis
 
-Combines profitability, demand, and inventory efficiency into a single view to guide product prioritization decisions.
+Combines resale price performance, transaction volume, and inventory efficiency to guide product prioritization decisions.
 
 Includes:
 - Profit by Colorway
 - Shoe Model × Colorway Profit Matrix
 - Overall Performance comparison (Profit vs. Sales Volume vs. Inventory Turnover) by Shoe Model
 
-**Key Insight:** No single product wins across every metric — prioritization depends on business goals: profitability, demand, or inventory efficiency.
-**Action:** Align product prioritization with current business goals — choose high-profit models (like Jordan 4 Retro) for revenue growth, or high-volume models for maximizing market reach and turnover speed.
+**Key Insight:** No single shoe model leads across every metric. Resale price differences, transaction volume, and inventory turnover favour different models.
+**Action:** Prioritize products according to the selected business goal, considering resale price differences, transaction volume, and inventory turnover.
 
 ![Product Prioritization Analysis](Dashboard/Product_Prioritization_Analysis.png)
 
 ---
 ## Key Insights
 
-- Air Jordan 4 Retro generated the highest total profit; Air Jordan 11 Retro achieved the highest average profit per transaction.
-- Walk-in Retail generated the highest total and average profit among all sales channels, though it also has the slowest inventory turnover.
+- Air Jordan 4 Retro generated the highest total resale price difference; Air Jordan 11 Retro had the highest average resale price difference per transaction.
+- Walk-in Retail generated the highest total and average resale price differences among all sales channels, though it also has the slowest inventory turnover.
 - GOAT and StockX turn over inventory the fastest (~7 days average), compared to Walk-in Retail (~33 days) — a significant efficiency gap across channels.
-- Deadstock sneakers achieved the highest resale prices and profitability among all product conditions.
-- Loss-making transactions totaled 1,933 (out of 5,000), amounting to $98.2K in losses — concentrated most heavily in Air Jordan 3 Retro and Air Jordan 1 Low.
-- No single shoe model outperforms across every metric simultaneously — profitability, demand, and inventory turnover each favor different models, meaning prioritization should align with specific business goals rather than a single "best" product.
+- Deadstock sneakers achieved the highest resale prices and resale price differences among all product conditions.
+- Of 5,000 records, 1,933 had negative resale price differences, totalling approximately $98.2K. Used records accounted for 1,655 (~$95.4K), while VNDS accounted for 278 (~$2.75K). No records with negative resale price differences were observed for Deadstock (Brand New). In the condition-filtered model analysis, Air Jordan 3 Retro and Air Jordan 1 Low had the highest counts for Used, while Air Jordan 4 Retro led for VNDS.
+- No single shoe model outperformed across every metric simultaneously. Resale price differences, transaction volume, and inventory turnover favoured different models, highlighting why product prioritisation should align with specific business goals rather than a single “best” product.
 
 ---
 
@@ -188,9 +189,9 @@ Includes:
 Based on the analysis, the following recommendations are proposed:
 
 - Prioritize high-performing shoe model–colorway combinations that consistently balance demand, profitability, and inventory efficiency.
-- Increase inventory allocation for products with strong demand and healthy profit margins.
+- Consider transaction volume, positive resale price differences, and inventory duration when allocating inventory.
 - Continue leveraging high-performing sales channels while investigating opportunities to improve lower-performing channels.
-- Maintain product quality standards, as better product condition significantly improves resale value and profitability.
+- Compare resale prices and resale price differences across product conditions when making sourcing decisions.
 - Consider profitability alongside inventory turnover when making stocking decisions rather than relying on sales speed alone.
 
 ---
