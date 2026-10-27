@@ -47,6 +47,7 @@ The dataset contains **5,000 Air Jordan sneaker market transactions**, providing
 | Profit_Margin_USD | Resale price minus original retail price; fees and other expenses are not deducted |
 
 **Metric Interpretation:** Throughout this project, the terms “profit” and “loss” refer to the dataset's `Profit_Margin_USD` measure, calculated as resale price minus original retail price. The measure does not account for fees or other expenses, so it should not be interpreted as actual net profit or confirmed financial loss.
+
 ---
 
 ## Dataset Source
@@ -179,7 +180,7 @@ Includes:
 - Walk-in Retail generated the highest total and average resale price differences among all sales channels, though it also has the slowest inventory turnover.
 - GOAT and StockX turn over inventory the fastest (~7 days average), compared to Walk-in Retail (~33 days) — a significant efficiency gap across channels.
 - Deadstock sneakers achieved the highest resale prices and resale price differences among all product conditions.
-- Of 5,000 records, 1,933 had negative resale price differences, totalling approximately $98.2K. Used records accounted for 1,655 (~$95.4K), while VNDS accounted for 278 (~$2.75K). No records with negative resale price differences were observed for Deadstock (Brand New). In the condition-filtered model analysis, Air Jordan 3 Retro and Air Jordan 1 Low had the highest counts for Used, while Air Jordan 4 Retro led for VNDS.
+- Of 5,000 records, 1,933 had negative resale price differences, totalling approximately $98.2K. Used records accounted for 1,655 records (approximately $95.4K), while VNDS accounted for 278 records (approximately $2.75K). No records with negative resale price differences were observed for Deadstock (Brand New). In the condition-filtered model analysis, Air Jordan 3 Retro and Air Jordan 1 Low had the highest counts for Used, while Air Jordan 4 Retro led for VNDS.
 - No single shoe model outperformed across every metric simultaneously. Resale price differences, transaction volume, and inventory turnover favoured different models, highlighting why product prioritisation should align with specific business goals rather than a single “best” product.
 
 ---
