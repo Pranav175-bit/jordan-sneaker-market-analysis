@@ -22,7 +22,7 @@ The analysis focuses on answering questions such as:
 - How does product condition affect resale price and profitability?
 - Which shoe models sell the fastest based on inventory turnover?
 - Which shoe model–colorway combinations should the business prioritize based on overall performance?
-- Which shoe models are most associated with loss-making transactions?
+- What drives loss-making transactions?
 - Which sales channels turn over inventory the fastest?
 
 ---
@@ -59,6 +59,8 @@ This project uses the **Air Jordan Sneaker Market and Resale Data (2023–2026)*
 *Note:* While the dataset is titled "2023–2026" on Kaggle, the actual transaction records analyzed in this project span January 2023 to September 2025.
 
 *Note:* This dataset was used for educational and portfolio purposes. Its records have not been independently verified as actual marketplace transactions, so findings should be interpreted as patterns within the dataset rather than confirmed real-world market outcomes. All SQL analysis, business insights, and Power BI dashboards were independently developed.
+
+*Note:* This is an independent project and is not affiliated with or endorsed by Nike or Jordan Brand.
 
 ---
 
@@ -104,10 +106,10 @@ The SQL analysis was organized into seven business-focused domains to answer rea
 The analysis covers:
 
 1. **Product Performance** – Evaluates sales performance across shoe models and colorways.
-2. **Profitability** – Compares the dataset's resale–retail price differences across products and analyzes records with negative differences.
+2. **Profitability** – Compares profit across products and analyzes loss-making records.
 3. **Sales Channel Performance** – Compares profitability, sales volume, and inventory efficiency across different sales channels.
 4. **Inventory Analysis** – Evaluates inventory turnover and its relationship with profitability.
-5. **Product Condition Analysis** – Compares resale prices and resale price differences across product conditions.
+5. **Product Condition Analysis** – Compares resale prices and profit across product conditions
 6. **Demand Analysis** – Identifies the most popular colorways and demand patterns across shoe models.
 7. **Overall Product Performance** – Evaluates products by balancing sales volume, profitability, and inventory efficiency.
 
@@ -133,8 +135,8 @@ Includes:
 - Total Profit by Sales Channel
 - Sales Volume by Shoe Model
 
-**Key Insight:** Air Jordan 4 Retro recorded the highest total resale price difference, while Air Jordan 11 Retro had the highest average resale price difference per transaction. Walk-in Retail recorded the highest total and average resale price differences among sales channels.
-**Action:** Consider these results alongside transaction volume and inventory duration when making product selection and inventory allocation decisions.
+**Key Insight:** Air Jordan 4 Retro leads in total profit and sales volume, while Air Jordan 11 Retro earns the most per transaction. Air Jordan 1 Low sells 1,020 units but earns the lowest total profit ($52K). Walk-in Retail is the top channel by total and average profit. Monthly profit is mostly between $10K and $16K. The sudden surge in May 2025 came mainly from Deadstock.
+**Action:** Prioritize Air Jordan 4 Retro and Air Jordan 11 Retro, and review Air Jordan 1 Low pricing and sourcing before restocking.
 
 ![Executive Dashboard](Dashboard/Executive_Dashboard.png)
 
@@ -149,12 +151,12 @@ Includes:
 - Average Profit and Resale Price by Product Condition
 - Average Profit by Inventory Category
 - Average Profit by Sales Channel
-- Average Inventory Days by Shoe Model
-- Inventory Turnover by Sales Channel
-- Loss-Making Transactions by Shoe Model
+- Average Days in Inventory by Sales Channel
+- Total Loss Amount by Shoe Model
+- Total Loss Amount by Product Condition
 
-**Key Insight:** Deadstock-condition items had the highest average resale prices and resale price differences. Of the 5,000 records, 1,933 had negative resale price differences, with a combined negative difference of approximately $98.2K.
-**Action:** Prioritize sourcing and stocking Deadstock-condition inventory based on its observed resale-price performance, and investigate patterns in negative resale price differences to inform inventory decisions.
+**Key Insight:** Deadstock earns an average profit of $264 per transaction, compared with $38 for VNDS and -$58 for Used. Used pairs account for $95.43K of the $98.18K total loss (97%), and all 1,655 Used transactions are loss-making. GOAT and StockX hold stock about 8 days, while the other channels hold it about 33 days.
+**Action:** Prioritize sourcing and stocking Deadstock inventory. Review the sourcing strategy for Used pairs, since they always sell below retail price.
 
 ![Business Dashboard](Dashboard/Business_Performance_Dashboard.png)
 
@@ -168,20 +170,21 @@ Includes:
 - Shoe Model × Colorway Profit Matrix
 - Overall Performance comparison (Profit vs. Sales Volume vs. Inventory Turnover) by Shoe Model
 
-**Key Insight:** No single shoe model leads across every metric. Resale price differences, transaction volume, and inventory turnover favour different models.
-**Action:** Prioritize products according to the selected business goal, considering resale price differences, transaction volume, and inventory turnover.
+**Key Insight:** Across all conditions, Air Jordan 4 Retro leads in both total profit ($100K) and sales volume (1,044), while Air Jordan 1 Low sells 1,020 units but earns the lowest total profit ($52K). The strongest model-colorway combinations are Air Jordan 11 Retro in Military Blue ($15.3K) and Pine Green ($14.4K). The weakest is Air Jordan 1 Low in Lost & Found ($3.4K), even though Lost & Found is the second-highest colorway by total profit ($49K).
+**Action:** Prioritize Air Jordan 4 Retro (especially Lost & Found and Chicago) and Air Jordan 11 Retro (especially Military Blue and Pine Green). Review Air Jordan 1 Low pricing and sourcing before restocking.
 
 ![Product Prioritization Analysis](Dashboard/Product_Prioritization_Analysis.png)
 
 ---
 ## Key Insights
 
-- Air Jordan 4 Retro generated the highest total resale price difference; Air Jordan 11 Retro had the highest average resale price difference per transaction.
-- Walk-in Retail generated the highest total and average resale price differences among all sales channels, though it also has the slowest inventory turnover.
-- GOAT and StockX turn over inventory the fastest (~7 days average), compared to Walk-in Retail (~33 days) — a significant efficiency gap across channels.
-- Deadstock sneakers achieved the highest resale prices and resale price differences among all product conditions.
-- Of 5,000 records, 1,933 had negative resale price differences, totalling approximately $98.18K. Used records accounted for 1,655 records (approximately $95.4K), while VNDS accounted for 278 records (approximately $2.75K). No records with negative resale price differences were observed for Deadstock (Brand New). In the condition-filtered model analysis, Air Jordan 3 Retro and Air Jordan 1 Low had the highest counts for Used, while Air Jordan 4 Retro led for VNDS.
-- No single shoe model outperformed across every metric simultaneously. Resale price differences, transaction volume, and inventory turnover favoured different models, highlighting why product prioritisation should align with specific business goals rather than a single “best” product.
+- Across all conditions, Air Jordan 4 Retro leads in both total profit ($100K) and sales volume (1,044). Air Jordan 11 Retro earns the most per transaction.
+- Air Jordan 1 Low sells 1,020 units but earns the lowest total profit ($52K).
+- Deadstock earns an average profit of $264 per transaction, VNDS $38 and Used -$58.
+- All 1,655 Used transactions are loss-making. Used accounts for about $95.43K (97%) of the $98.18K total loss, VNDS for about $2.75K (278 transactions), and Deadstock for none.
+- GOAT and StockX hold stock about 8 days, while the other channels hold it about 33 days. Walk-in Retail has the highest average profit.
+- The best balance of profit, volume and speed is Air Jordan 11 Retro in Military Blue (average profit $126, 121 units, 19 days).
+- Monthly profit is mostly between $10K and $16K. The May 2025 surge came mainly from Deadstock.
 
 ---
 
@@ -189,13 +192,20 @@ Includes:
 
 Based on the analysis, the following recommendations are proposed:
 
-- Prioritize high-performing shoe model–colorway combinations that consistently balance demand, profitability, and inventory efficiency.
-- Consider transaction volume, positive resale price differences, and inventory duration when allocating inventory.
-- Continue leveraging high-performing sales channels while investigating opportunities to improve lower-performing channels.
-- Compare resale prices and resale price differences across product conditions when making sourcing decisions.
-- Consider profitability alongside inventory turnover when making stocking decisions rather than relying on sales speed alone.
+- Prioritize sourcing and stocking Deadstock inventory.
+- Review the sourcing strategy for Used pairs, since all of them sold below retail price.
+- Focus on Air Jordan 4 Retro (especially Lost & Found and Chicago) and Air Jordan 11 Retro (especially Military Blue and Pine Green).
+- Review Air Jordan 1 Low pricing and sourcing before restocking.
+- Use GOAT and StockX when fast turnover matters.
 
 ---
+
+## Limitations
+
+- September 2025 is incomplete (data ends 27 September 2025).
+- "Profit" is measured against the retail price, not the purchase cost, so it is not real net profit.
+- The data does not explain why profit surged in May 2025.
+- The records were not verified as real marketplace transactions.
 
 ## Skills Demonstrated
 
