@@ -22,7 +22,7 @@ Transaction ID – Unique identifier for each sale
 Sale Date – Date of the transaction
 Shoe Model – Air Jordan model sold
 Colorway – Color variation of the shoe
-Condition – Product condition (e.g., New or Used)
+Condition – Product condition (e.g.Deadstock, VNDS, Used))
 Retail Price (USD) – Original retail price
 Resale Price (USD) – Selling price in the resale market
 Sales Channel – Platform where the shoe was sold
@@ -36,7 +36,7 @@ This dataset is used to analyze product performance, profitability, sales channe
 | Sale_Date         | Date of the resale transaction              |
 | Shoe_Model        | Air Jordan sneaker model                    |
 | Colorway          | Color variation of the sneaker              |
-| Condition         | Product condition (New/Used)                |
+| Condition         | Product condition (Deadstock, VNDS, Used)                |
 | Retail_Price_USD  | Original retail price in USD                |
 | Resale_Price_USD  | Resale price in USD                         |
 | Sales_Channel     | Platform where the sneaker was sold         |
@@ -150,7 +150,7 @@ group by Condition
 /*
 EDA Summary:
 
-The dataset contains 5,000 sneaker resale transactions recorded between 2023-01-01 and 2025-09-27. It includes 5 unique shoe models and 9 colorways, with sales distributedacross 
+The dataset contains 5,000 sneaker resale transactions recorded between 2023-01-01 and 2025-09-27. It includes 5 unique shoe models and 9 colorways, with sales distributed across 
 five sales channels and three product conditions. The dataset provides sufficient coverage to support business analysis of sales performance, profitability, customer demand,
 and inventory efficiency.
 */
@@ -161,7 +161,7 @@ and inventory efficiency.
 select max(Retail_Price_USD) as highest_Retail_Price, min(Retail_Price_USD) as lowest_Retail_Price
 from jordan_market_clean
 
---highest and lowest Resail price
+--highest and lowest Resale price
 select max(Resale_Price_USD) as highest_Resale_Price, min(Resale_Price_USD) as lowest_Resale_Price
 from jordan_market_clean
 
@@ -334,6 +334,7 @@ performance.
 select Sales_Channel,count(*) as sales_volume
 from jordan_market_clean
 group by Sales_Channel
+order by Sales_Channel desc;
 /*
 Business Insight:
 GOAT recorded the highest sales volume in the dataset with 1,032 transactions, closely followed by StockX with 1,027 transactions. This indicates that customer demand is relatively
@@ -447,6 +448,24 @@ Prioritize sourcing and selling Deadstock sneakers to maximize profitability, an
 to reduce losses.
 */
 
+----How does product condition affect profit and the number of loss-making transactions?
+select Condition,
+count(*) as total_transaction,
+sum(case when Profit_Margin_USD <0 then 1 else 0 end) as loss_transaction,
+round(100.0* sum(case when Profit_Margin_USD <0 then 1 else 0 end) / count(*),1) as loss_rate_pct
+from jordan_market_clean
+GROUP BY Condition
+ORDER BY loss_rate_pct DESC;
+/*
+Business Insight:
+Deadstock has the highest average profit ($264), while Used has an average loss (-$58).
+All 1,655 Used transactions are loss-making, and Deadstock has none.
+
+Business Recommendation:
+Prioritize sourcing and selling Deadstock sneakers, which generate the highest profit and no losses.
+Review the sourcing strategy for Used sneakers, since all 1,655 Used transactions sold below their retail price.
+Confirm actual acquisition costs before deciding whether to keep selling Used pairs, because profit here is measured against retail price, not purchase cost.
+*/
 
 -------------------------------------------
 --5.6 Demand Analysis
@@ -498,17 +517,38 @@ SELECT
     AVG(Profit_Margin_USD) AS Avg_Profit,
     AVG(Days_in_Inventory) AS Avg_Inventory_Days
 FROM jordan_market_clean
-GROUP BY Shoe_Model, Colorway;
+GROUP BY Shoe_Model, Colorway
+ORDER BY Avg_Inventory_Days ASC;  --sorted by Avg_Inventory_Days
+
+SELECT
+    Shoe_Model,
+    Colorway,
+    COUNT(*) AS Sales_Volume,
+    AVG(Profit_Margin_USD) AS Avg_Profit,
+    AVG(Days_in_Inventory) AS Avg_Inventory_Days
+FROM jordan_market_clean
+GROUP BY Shoe_Model, Colorway
+ORDER BY Sales_Volume DESC;    --sorted by Sales_Volume
+
+SELECT
+    Shoe_Model,
+    Colorway,
+    COUNT(*) AS Sales_Volume,
+    AVG(Profit_Margin_USD) AS Avg_Profit,
+    AVG(Days_in_Inventory) AS Avg_Inventory_Days
+FROM jordan_market_clean
+GROUP BY Shoe_Model, Colorway
+ORDER BY Avg_Profit DESC;    --sorted by Avg_Profit 
+
 /*
 Business Insight:
-
-The analysis shows that no single shoe model–colorway combination outperforms all others across sales volume, profitability, and inventory turnover.
-Instead, several combinations perform well across different metrics, indicating that product performance should be evaluated based on business priorities rather than a single KPI.
-
+No single model-colorway combination is first in all three areas: sales volume, profit and inventory time.
+But Air Jordan 11 Retro in Military Blue is near the top in all three: second-highest average profit ($126), one of the fastest sellers (19 days) and 121 units sold.
+The combination with the most sales (Air Jordan 1 Low in Pine Green, 130 units) earns only $52.88 per sale, so high sales do not always mean high profit.
 
 Business Recommendation:
-Prioritize inventory, marketing, and restocking efforts for shoe model–colorway combinations that consistently perform well across sales volume,
-profitability, and inventory turnover rather than focusing on a single performance metric.
+Focus stock, marketing and restocking on combinations that do well in profit, sales and speed together, such as Air Jordan 11 Retro in Military Blue.
+Do not choose a combination based on sales volume alone.
 */
 
 
