@@ -109,7 +109,7 @@ The analysis covers:
 2. **Profitability** – Compares profit across products and analyzes loss-making records.
 3. **Sales Channel Performance** – Compares profitability, sales volume, and inventory efficiency across different sales channels.
 4. **Inventory Analysis** – Evaluates inventory turnover and its relationship with profitability.
-5. **Product Condition Analysis** – Compares resale prices and profit across product conditions
+5. **Product Condition Analysis** – Compares resale prices and profit across product conditions.
 6. **Demand Analysis** – Identifies the most popular colorways and demand patterns across shoe models.
 7. **Overall Product Performance** – Evaluates products by balancing sales volume, profitability, and inventory efficiency.
 
