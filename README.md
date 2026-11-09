@@ -183,7 +183,7 @@ Includes:
 - Deadstock earns an average profit of $264 per transaction, VNDS $38 and Used -$58.
 - All 1,655 Used transactions are loss-making. Used accounts for about $95.43K (97%) of the $98.18K total loss, VNDS for about $2.75K (278 transactions), and Deadstock for none.
 - GOAT and StockX hold stock about 8 days, while the other channels hold it about 33 days. Walk-in Retail has the highest average profit.
-- The best balance of profit, volume and speed is Air Jordan 11 Retro in Military Blue (average profit $126, 121 units, 19 days).
+- Air Jordan 11 Retro in Military Blue showed a strong balance of average resale-versus-retail price difference ($126), sales volume (121 units) and average inventory duration (19 days).
 - Monthly profit is mostly between $10K and $16K. The May 2025 surge came mainly from Deadstock.
 
 ---
