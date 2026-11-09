@@ -10,7 +10,7 @@ This project demonstrates end-to-end data analysis using SQL Server and Power BI
 
 Businesses operating in the sneaker resale market must balance customer demand, profitability, inventory turnover, and sales channel performance when making product selection and inventory investment decisions.
 
-Without data-driven analysis, it becomes difficult to identify which products deserve additional investment, which sales channels generate the greatest value, or how operational factors such as inventory turnover and product condition influence profitability.
+Without data-driven analysis, it becomes difficult to identify which products deserve additional investment, which sales channels generate the greatest value, or how operational factors such as inventory duration and product condition influence profitability.
 
 This project addresses these challenges by analyzing historical transaction data to answer key business questions and provide actionable recommendations for improving business performance.
 
@@ -20,10 +20,10 @@ The analysis focuses on answering questions such as:
 - Which colorways show the strongest demand based on transaction volume?
 - Which sales channels perform best?
 - How does product condition affect resale price and profitability?
-- Which shoe models sell the fastest based on inventory turnover?
+- Which shoe models have the shortest average time in inventory?
 - Which shoe model–colorway combinations should the business prioritize based on overall performance?
 - What drives loss-making transactions?
-- Which sales channels turn over inventory the fastest?
+- Which sales channels have the shortest average inventory duration?
 
 ---
 
@@ -108,7 +108,7 @@ The analysis covers:
 1. **Product Performance** – Evaluates sales performance across shoe models and colorways.
 2. **Profitability** – Compares profit across products and analyzes loss-making records.
 3. **Sales Channel Performance** – Compares profitability, sales volume, and inventory efficiency across different sales channels.
-4. **Inventory Analysis** – Evaluates inventory turnover and its relationship with profitability.
+4. **Inventory Analysis** – Evaluates inventory duration alongside profitability.
 5. **Product Condition Analysis** – Compares resale prices and profit across product conditions.
 6. **Demand Analysis** – Identifies the most popular colorways and demand patterns across shoe models.
 7. **Overall Product Performance** – Evaluates products by balancing sales volume, profitability, and inventory efficiency.
@@ -144,7 +144,7 @@ Includes:
 
 ### 2. Business Performance Analysis
 
-Detailed operational insights into profitability, inventory turnover, and loss-making transactions.
+Detailed operational insights into profitability, inventory duration, and loss-making transactions.
 
 Includes:
 - Total Loss Amount, Count of Loss-Making Transactions
@@ -168,7 +168,7 @@ Combines resale price performance, transaction volume, and inventory efficiency 
 Includes:
 - Profit by Colorway
 - Shoe Model × Colorway Profit Matrix
-- Overall Performance comparison (Profit vs. Sales Volume vs. Inventory Turnover) by Shoe Model
+- Overall Performance comparison (Profit vs. Sales Volume vs. Average Days in Inventory) by Shoe Model
 
 **Key Insight:** Across all conditions, Air Jordan 4 Retro leads in both total profit ($100K) and sales volume (1,044), while Air Jordan 1 Low sells 1,020 units but earns the lowest total profit ($52K). The strongest model-colorway combinations are Air Jordan 11 Retro in Military Blue ($15.3K) and Pine Green ($14.4K). The weakest is Air Jordan 1 Low in Lost & Found ($3.4K), even though Lost & Found is the second-highest colorway by total profit ($49K).
 **Action:** Prioritize Air Jordan 4 Retro (especially Lost & Found and Chicago) and Air Jordan 11 Retro (especially Military Blue and Pine Green). Review Air Jordan 1 Low pricing and sourcing before restocking.
@@ -196,7 +196,7 @@ Based on the analysis, the following recommendations are proposed:
 - Review the sourcing strategy for Used pairs, since all of them sold below retail price.
 - Focus on Air Jordan 4 Retro (especially Lost & Found and Chicago) and Air Jordan 11 Retro (especially Military Blue and Pine Green).
 - Review Air Jordan 1 Low pricing and sourcing before restocking.
-- Use GOAT and StockX when fast turnover matters.
+- Use GOAT and StockX when shorter inventory duration is a priority
 
 ---
 
